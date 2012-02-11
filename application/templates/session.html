@@ -1,0 +1,27 @@
+<p>Create a session.</p>
+<div>
+<form method="POST">
+	{% csrf_token %}
+	{{ session.errors }}
+	{{ session.non_field_errors }}
+
+	{{ session.suser }}
+    <label for="sdate">Date</label>
+    {{ session.sdate }} {{ session.sdate.errors }}<br />
+
+    <label for="slength">Length</label>
+    {{ session.slength }} {{ session.slength.errors }}<br />
+
+	<input type="submit" name="submit" value="Submit">
+</form>
+</div>
+
+<hr />
+
+{% if latest_session_list %}
+    <ul>
+    {% for session in latest_session_list %}
+        <li><a href="{{ session.id }}/">{{ session.sdate }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}

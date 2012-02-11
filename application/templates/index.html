@@ -1,0 +1,25 @@
+<p>Create an account.</p>
+<div>
+<form method="POST" action="">
+	{% csrf_token %}
+    <label for="uuser">Username</label>
+    {{ user.uuser }}<br />
+
+    <label for="uheight">Height</label>
+    {{ user.uheight }}<br />
+
+	<label for="uweight">Weight</label>
+    {{ user.uweight }}<br />
+	<input type="submit" name="submit" value="Submit">
+</form>
+</div>
+
+<hr />
+
+{% if latest_user_list %}
+    <ul>
+    {% for user in latest_user_list %}
+        <li><a href="{{ user.id }}/">{{ user.uuser }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}

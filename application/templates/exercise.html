@@ -1,0 +1,31 @@
+<p>Enter an exercise.</p>
+<div>
+<form method="POST" action="">
+	{% csrf_token %}
+	{{ exercise.esession }}
+    <label for="exercise">Exercise</label>
+	<select name="exercise">
+		{% for exercise in exercise_list %}
+			<option value="{{ exercise.id }}">{{ exercise.dexercise }}</option>
+		{% endfor %}
+	</select><br />
+
+    <label for="eweight">Weight</label>
+    {{ exercise.eweight }}<br />
+
+    <label for="edistance">Distance</label>
+    {{ exercise.edistance }}<br />
+
+	<input type="submit" name="submit" value="Submit">
+</form>
+</div>
+
+<hr />
+
+{% if latest_exercise_list %}
+    <ul>
+    {% for exercise in latest_exercise_list %}
+        <li><a href="">{{ exercise.exercise.dexercise }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
