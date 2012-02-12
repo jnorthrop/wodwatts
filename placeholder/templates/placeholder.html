@@ -204,27 +204,7 @@
     <div class="span3">&nbsp;
     </div>
     <div class="span6">
-		{% if messages %}
-				{% for message in messages %}
-					<div class="marketing-byline" style="color: #b94a48;">{{ message }}</div>
-				{% endfor %}
-		{% else %}
-			<p>If you want to recieve updates on how we are progressing as well as get a first shot at WODWatts when it is available, enter your email below.</p>
-			<div style="padding: 0 30px;">
-			<form method="POST" action="#signup">
-				{% csrf_token %}
-				{{ form.non_field_errors }}
-				{{ form.entry_date.errors }}
-				{{ form.entry_date }}
-				<div>
-					{{ form.email.errors }}
-					<label for="id_email" style="font-weight:bold;">Your email address:</label>
-					{{ form.email }}
-				</div>
-				<input type="submit" name="submit" value="Submit">
-			</form>
-			</div>
-		{% endif %} 		
+		<div style="width:100%; text-align: center">A signup form will be back here soon.</div>
     </div>
     <div class="span3">&nbsp;
     </div>
