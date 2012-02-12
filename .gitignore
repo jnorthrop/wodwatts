@@ -3,5 +3,4 @@
 /lib
 *.pyc
 *.db
-.gitignore
 .Python
