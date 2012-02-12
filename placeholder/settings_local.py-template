@@ -1,0 +1,11 @@
+# Fill in this file and rename to settings_local.py
+
+DATABASES = {
+    'default': {
+        'NAME': '',                      # The local database name.
+        'USER': '',                      # The local user name for the database.
+        'PASSWORD': '',                  # The local user's password.
+        'HOST': '',                      # Set to empty string for localhost.
+        'PORT': '',                      # Set to empty string for default.
+    }
+}
