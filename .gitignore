@@ -4,3 +4,4 @@
 *.pyc
 *.db
 .Python
+placeholder/settings_local.py
