@@ -1,3 +1,7 @@
-/ENV
+/bin
+/include
+/lib
 *.pyc
 *.db
+.gitignore
+.Python
