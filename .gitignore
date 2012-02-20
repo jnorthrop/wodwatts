@@ -5,3 +5,4 @@
 *.db
 .Python
 placeholder/settings_local.py
+application/settings_local.py

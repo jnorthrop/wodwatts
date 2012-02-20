@@ -1,22 +1,14 @@
 import os
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Jeff', 'jnorthrop@gmail.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'app.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
     }
 }
 
@@ -114,7 +106,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'application',
  	'gunicorn',
+ 	'registration',
  )
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window for new accounts
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -138,3 +133,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+   from settings_local import *
+except ImportError:
+   pass
