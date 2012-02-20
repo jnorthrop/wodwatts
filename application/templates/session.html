@@ -1,16 +1,16 @@
-<p>Create a session.</p>
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+{% if session_id %}
+	<p>Edit your session.</p>
+{% else %}
+	<p>Add a new session.</p>
+{% endif %}
 <div>
-<form method="POST">
-	{% csrf_token %}
-	{{ session.errors }}
-	{{ session.non_field_errors }}
-
-	{{ session.suser }}
-    <label for="sdate">Date</label>
-    {{ session.sdate }} {{ session.sdate.errors }}<br />
-
-    <label for="slength">Length</label>
-    {{ session.slength }} {{ session.slength.errors }}<br />
+<form method="post" action=".">{% csrf_token %}
+	{{ form.as_p }}
 
 	<input type="submit" name="submit" value="Submit">
 </form>
@@ -18,10 +18,23 @@
 
 <hr />
 
-{% if latest_session_list %}
-    <ul>
-    {% for session in latest_session_list %}
-        <li><a href="{{ session.id }}/">{{ session.sdate }}</a></li>
-    {% endfor %}
-    </ul>
+{% if session_id %}
+	<a href="/session/{{ session_id }}/exercise">Add Exercise</a>
+	{% if exercise_list %}
+		<ul>
+		{% for exercise in exercise_list %}
+			<li>{{ exercise.weight }}/{{ exercise.distance }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+{% else %}
+	{% if latest_session_list %}
+		<ul>
+		{% for session in latest_session_list %}
+			<li><a href="/session/{{ session.id }}/">{{ session.sdate }}</a></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
 {% endif %}
+
+{% endblock %}

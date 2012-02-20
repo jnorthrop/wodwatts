@@ -2,5 +2,20 @@
 {% load i18n %}
 
 {% block content %}
-Index page
+
+{% if user.is_authenticated %}
+	{% if user %}
+		<div>Name: {{ user.username }}</div>
+		<div>Email: {{ user.email }}</div>
+	{% endif %}
+	<hr />
+	{% if profile %}
+		<div>Height: {{ profile.pheight }}</div>
+		<div>Weight: {{ profile.pweight }}</div>
+		<div><a href="/profile">Change</a></div>
+	{% endif %}
+{% else %}
+	<div><a href="/accounts/register/">Register Now</a></div>
+{% endif %}
+
 {% endblock %}

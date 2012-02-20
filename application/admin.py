@@ -1,4 +1,4 @@
-from application.models import Definition, User, Session, Exercise
+from application.models import *
 from django.contrib import admin
 
 admin.site.register(Definition)
@@ -20,12 +20,12 @@ class SessionAdmin(admin.ModelAdmin):
 	list_filter = ['sdate']
 	date_hierarchy = 'sdate'
 
-class UserAdmin(admin.ModelAdmin):
+class ProfileAdmin(admin.ModelAdmin):
 	fieldsets = [
-		(None, {'fields': ['uuser']}),
-		('Physical Characteristics', {'fields': ['uheight', 'uweight'], 'classes': ['collapse']}),
+		(None, {'fields': ['puser']}),
+		('Physical Characteristics', {'fields': ['pheight', 'pweight'], 'classes': ['collapse']}),
 	]
 	inlines = [SessionInline]
 
-admin.site.register(User, UserAdmin)
+admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Session, SessionAdmin)
