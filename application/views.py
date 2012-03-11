@@ -10,8 +10,9 @@ def index(request):
 		user = None
 	
 	profile = Profile.objects.get_or_none(puser=request.user.id)
+	sessions = Session.objects.all().filter(suser=request.user.id)
 		
-	return render_to_response('index.html', {'user': user, 'profile': profile, },
+	return render_to_response('index.html', {'user': user, 'profile': profile, 'sessions': sessions, },
 					context_instance=RequestContext(request))
 
 def profile(request):

@@ -13,7 +13,14 @@
 		<div>Height: {{ profile.pheight }}</div>
 		<div>Weight: {{ profile.pweight }}</div>
 		<div><a href="/profile">Change</a></div>
+	{% else %}
+		<div><a href="/profile">Add a profile</a></div>
 	{% endif %}
+	<hr />
+	{% for session in sessions %}
+		<div>{{ session.sdate }} - {{ session.slength }} <a href="/session/{{ session.id }}">edit</a></div>
+	{% endfor %}
+	<div><a href="/session">Add a new workout session</a></div>
 {% else %}
 	<div><a href="/accounts/register/">Register Now</a></div>
 {% endif %}
